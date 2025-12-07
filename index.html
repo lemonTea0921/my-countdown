@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Sept 21, 2026</title>
+    <style>
+        /* CSS: Styling the page */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #222;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .countdown-container {
+            display: flex;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            color: #00d2ff; /* Cyber blue accent */
+        }
+
+        .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Responsive design for mobile phones */
+        @media (max-width: 600px) {
+            .countdown-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .time-box {
+                min-width: 70px;
+                padding: 15px;
+            }
+            .number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Countdown to September 21, 2026</h1>
+
+    <div class="countdown-container" id="countdown">
+        <div class="time-box">
+            <span class="number" id="days">00</span>
+            <span class="label">Days</span>
+        </div>
+        <div class="time-box">
+            <span class="number" id="hours">00</span>
+            <span class="label">Hours</span>
+        </div>
+        <div class="time-box">
+            <span class="number" id="minutes">00</span>
+            <span class="label">Minutes</span>
+        </div>
+        <div class="time-box">
+            <span class="number" id="seconds">00</span>
+            <span class="label">Seconds</span>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT: The logic
+        
+        // 1. Set the date we're counting down to
+        // Note: This defaults to midnight in the user's local time zone.
+        const targetDate = new Date("September 21, 2026 00:00:00").getTime();
+
+        // 2. Update the count down every 1 second
+        const timer = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = targetDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the elements with corresponding IDs
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<h2>THE DATE HAS ARRIVED!</h2>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
