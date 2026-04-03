@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Countdown to Mar,2 First Exam 2026</title>
+    <title>Turning Point</title>
     <style>
       /* CSS: Styling the page */
       body {
@@ -73,7 +73,7 @@
     </style>
   </head>
   <body>
-    <h1>Countdown to March,2 First Exam 2026</h1>
+    <h1>Turning Point</h1>
 
     <div class="countdown-container" id="countdown">
       <div class="time-box">
@@ -99,7 +99,7 @@
 
       // 1. Set the date we're counting down to
       // Note: This defaults to midnight in the user's local time zone.
-      const targetDate = new Date("March 2, 2026 06:00:00").getTime();
+      const targetDate = new Date("May 18, 2026 05:30:00").getTime();
 
       // 2. Update the count down every 1 second
       const timer = setInterval(function () {
@@ -112,7 +112,7 @@
         // Time calculations for days, hours, minutes and seconds
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
         );
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -130,7 +130,7 @@
         if (distance < 0) {
           clearInterval(timer);
           document.getElementById("countdown").innerHTML =
-            "<h2>THE DATE HAS ARRIVED!</h2>";
+            "<h2>You have done a great job!</h2>";
         }
       }, 1000);
     </script>
